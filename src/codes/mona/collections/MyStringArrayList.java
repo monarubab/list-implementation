@@ -1,8 +1,11 @@
 package codes.mona.collections;
 
+import static org.junit.Assert.assertSame;
+
 public class MyStringArrayList implements MyStringList {
 
 	private String[] array;
+	private int length = 0;
 
 	public MyStringArrayList(int capacity) {
 		array = new String[capacity];
@@ -15,26 +18,25 @@ public class MyStringArrayList implements MyStringList {
 
 	@Override
 	public void addElement(String element) {
-
-		for (int i = 0; i < array.length; i++) {
-
-			if (array[i] == null) {
-				array[i] = element;
-				return;
-			}
-		}
+		
+		array[length] = element;
+		length++;
+	}
+	
+	@Override
+	public void addElement(int position, String element) {
+		
+		array[position] = element;
 	}
 
 	@Override
 	public int length() {
-		
-		int length = 0;
-		for (int i = 0; i < array.length; i++) {
-			if (array[i] != null)
-				length++;
-			else
-				return length;
-		}
 		return length;
+	}
+	
+	public static void main(String[] args) {
+	MyStringArrayList myStringArrayList = new MyStringArrayList(1);
+		
+		System.out.println(myStringArrayList.getElement(1));
 	}
 }

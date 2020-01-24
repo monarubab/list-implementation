@@ -6,5 +6,7 @@ public interface MyStringList {
 	
 	public void addElement(String element);
 	
+	public void addElement(int position, String element);
+	
 	public int length();
 }
