@@ -30,5 +30,15 @@ public class PalindromeTest {
 		Palindrome p = new Palindrome();
 		
 		assertEquals(true, p.isPalindromeWithSpaces("was it a car or a cat i saw"));
+		assertEquals(true, p.isPalindromeWithSpaces(" "));
+		assertEquals(true, p.isPalindromeWithSpaces(""));
+	}
+	
+	@Test
+	public void isPalindromeWithSpacesIsFalse() {		
+		
+		Palindrome p = new Palindrome();
+		
+		assertEquals(false, p.isPalindromeWithSpaces("was it a car or a cat i sa"));
 	}
 }
