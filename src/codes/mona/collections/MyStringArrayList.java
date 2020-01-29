@@ -1,7 +1,5 @@
 package codes.mona.collections;
 
-import static org.junit.Assert.assertSame;
-
 public class MyStringArrayList implements MyStringList {
 
 	private String[] array;
@@ -13,6 +11,11 @@ public class MyStringArrayList implements MyStringList {
 
 	@Override
 	public String getElement(int position) {
+		
+		if(position >= length || position < 0) {
+			throw new MyStringArrayListOutOfBoundException();
+		}
+		
 		return array[position];
 	}
 
@@ -26,17 +29,34 @@ public class MyStringArrayList implements MyStringList {
 	@Override
 	public void addElement(int position, String element) {
 		
-		array[position] = element;
+		String[] newArrayList = new String[length+1];
+		
+		for(int i = 0; i < position; i++) {
+			newArrayList[i] = array[i];
+		}
+		
+		newArrayList[position] = element;
+		
+		for(int i = position+1; i < length; i++) {
+			newArrayList[i+1] = array[i];
+		}
+		array = newArrayList;//TODO
+		length++;
+	}
+
+	@Override
+	public void replaceElement(int position, String element) {
+		
+		if(position <= length || position > 0) {
+			array[position] = element;
+		}
+		else {
+			throw new MyStringArrayListOutOfBoundException();
+		}
 	}
 
 	@Override
 	public int length() {
 		return length;
-	}
-	
-	public static void main(String[] args) {
-	MyStringArrayList myStringArrayList = new MyStringArrayList(1);
-		
-		System.out.println(myStringArrayList.getElement(1));
 	}
 }
