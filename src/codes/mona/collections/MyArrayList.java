@@ -1,35 +1,35 @@
 package codes.mona.collections;
 
-public class MyStringArrayList implements MyStringList {
+public class MyArrayList<T> implements MyList<T>{
 
-	private String[] array;
+	private Object[] array;
 	private int length = 0;
 
-	public MyStringArrayList(int capacity) {
-		array = new String[capacity];
+	public MyArrayList(int capacity) {
+		array = new Object[capacity];
 	}
 
 	@Override
-	public String getElement(int position) {
+	public T getElement(int position) {
 		
 		if(position >= length || position < 0) {
 			throw new MyStringArrayListOutOfBoundException();
 		}
 		
-		return array[position];
+		return (T)array[position];
 	}
 
 	@Override
-	public void addElement(String element) {
+	public void addElement(T element) {
 		
 		array[length] = element;
 		length++;
 	}
 	
 	@Override
-	public void addElement(int position, String element) {
+	public void addElement(int position, T element) {
 		
-		String[] newArrayList = new String[length+1];
+		Object[] newArrayList = new Object[length+1];
 		
 		for(int i = 0; i < position; i++) {
 			newArrayList[i] = array[i];
@@ -37,15 +37,15 @@ public class MyStringArrayList implements MyStringList {
 		
 		newArrayList[position] = element;
 		
-		for(int i = position+1; i < length; i++) {
-			newArrayList[i+1] = array[i];
+		for(int i = position+1; i < length+1; i++) {
+			newArrayList[i] = array[i-1];
 		}
-		array = newArrayList;//TODO
+		array = newArrayList;
 		length++;
 	}
 
 	@Override
-	public void replaceElement(int position, String element) {
+	public void replaceElement(int position, T element) {
 		
 		if(position <= length || position > 0) {
 			array[position] = element;

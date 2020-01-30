@@ -4,12 +4,12 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
-public class MyStringArrayListTest {
+public class MyArrayListTest {
 
 	@Test
 	public void getCorrectElement() {
 		
-		MyStringArrayList myStringArrayList = new MyStringArrayList(3);
+		MyArrayList<String> myStringArrayList = new MyArrayList<>(3);
 		
 		myStringArrayList.addElement("apple");
 		myStringArrayList.addElement("banana");
@@ -20,7 +20,7 @@ public class MyStringArrayListTest {
 		
 	@Test(expected=MyStringArrayListOutOfBoundException.class)
 	public void addElementThrowsException() {
-		MyStringArrayList myStringArrayList = new MyStringArrayList(1);
+		MyArrayList<String> myStringArrayList = new MyArrayList<>(1);
 		
 		myStringArrayList.getElement(1);
 	}
@@ -28,7 +28,7 @@ public class MyStringArrayListTest {
 	@Test
 	public void setsCorrectLength() {
 		
-		MyStringArrayList myStringArrayList = new MyStringArrayList(3);
+		MyArrayList<String> myStringArrayList = new MyArrayList<>(3);
 		
 		myStringArrayList.addElement("s");
 		
@@ -38,7 +38,7 @@ public class MyStringArrayListTest {
 	@Test
 	public void addsElementAtCorrectPosition() {
 		
-		MyStringArrayList myStringArrayList = new MyStringArrayList(3);
+		MyArrayList<String> myStringArrayList = new MyArrayList<>(3);
 
 		myStringArrayList.addElement("apple");
 		myStringArrayList.addElement("cherry");
@@ -54,7 +54,7 @@ public class MyStringArrayListTest {
 	@Test
 	public void replacesElementCorrectly() {
 		
-		MyStringArrayList myStringArrayList = new MyStringArrayList(3);
+		MyArrayList<String> myStringArrayList = new MyArrayList<>(3);
 		
 		myStringArrayList.addElement("apple");
 		myStringArrayList.addElement("cherry");
